@@ -57,7 +57,6 @@ curl --location --request POST 'emcrpc:_you_rpc_password_@127.0.0.1:6662' \
         "protocolversion": 70015,
         "walletversion": 130000,
         "balance": 0.000000,
-        ...
 ```
 
 ### Управление сборкой

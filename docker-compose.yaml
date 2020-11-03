@@ -1,13 +1,13 @@
-# версия docker-compose
 version: '2'
 
-# имя директории для хранения данных
 volumes:
-  emercoin_data:
+  blockchain_data:
 
 services:
   emc:
     image: emercoin/core:0.7.10
+    volumes:
+      - 'blockchain_data:/root/.emercoin'
     restart: always
     command: ./bin/emercoind
     ports:

@@ -30,13 +30,13 @@ docker-compose restart emc
 
 ### Как проверить, что контейнер работает нормально?
 Нужно отправить **POST** (с помощью Postman, например)
-по адресу `http://emcrpc:_you_rpc_password_@127.0.0.1:6662`, тело запроса {"method": "getinfo" }
+по адресу `http://emcrpc:emcpass@127.0.0.1:6662`, тело запроса {"method": "getinfo" }
 
 **В Python:**
 ```python
 import requests
 
-url = "emcrpc:_you_rpc_password_@127.0.0.1:6662"
+url = "emcrpc:emcpass@127.0.0.1:6662"
 payload = "{\"method\": \"getinfo\" }"
 headers = { 'Content-Type': 'application/json' }
 response = requests.request("POST", url, headers=headers, data = payload)
@@ -46,7 +46,7 @@ print(response.text.encode('utf8'))
 **В командной строке c помощью Curl:**
 (sudo apt-get update && sudo apt-get install curl) - если Curl не установлен
 ```bash
-curl --location --request POST 'emcrpc:_you_rpc_password_@127.0.0.1:6662' \
+curl --location --request POST 'emcrpc:emcpass@127.0.0.1:6662' \
 --header 'Content-Type: application/json' \
 --data-raw '{"method": "getinfo" }'
 ```

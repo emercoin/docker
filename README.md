@@ -5,6 +5,7 @@ Docker compose image for Emercoin core
  
 Установить [Git](https://github.com/git-guides/install-git) 
 Установить [Docker](https://docs.docker.com/engine/install/) и [docker-compose](https://docs.docker.com/compose/install/#install-compose) 
+
 Склонировать репозитарий и перейти в папку с проектом:
 ```
 git clone https://github.com/emercoin/docker && cd docker
@@ -15,10 +16,13 @@ git clone https://github.com/emercoin/docker && cd docker
 docker-compose up -d
 ```
 
-Для RPC соедиения с контейнером используется 6662 порт
-пользователь: emcrpc
-пароль: emcpass
-метод: POST тело запроса пример {"method": "getinfo" }
+По умолчанию для соедиения с контейнером используется 6662 порт
+
+пользователь: **emcrpc**
+
+пароль: **emcpass**
+
+метод: **POST** тело запроса пример {"method": "getinfo" }
 
 **Сменить пароль в контейнере:**
 ```

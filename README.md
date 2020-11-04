@@ -16,9 +16,16 @@ git clone https://github.com/emercoin/docker && cd docker
 ``` 
 
 **Запустить сборку контейнера с Emercoin:**
+
+для обычной версии
 ```
 docker-compose up -d
 ```
+для версии fast start:
+```
+docker-compose -f docker-compose-fs.yaml up -d
+```
+
 Контейнер запущен, требуется время, чтобы скачать блокчейн (~3-5 часов), но некоторые данные можно получить уже сейчас.
 По умолчанию для соединения с контейнером используется порт 6662
 
@@ -72,6 +79,7 @@ curl --location --request POST 'emcrpc:emcpass@127.0.0.1:6662' \
 ```
 docker-compose stop emc
 ```
+
 **Удалить контейнеры:**
 ```
 docker-compose down

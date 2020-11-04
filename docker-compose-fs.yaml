@@ -1,0 +1,15 @@
+version: '3.8'
+
+volumes:
+  blockchain_data:
+
+services:
+  emc:
+    image: emercoin/core-fs:0.7.10
+    volumes:
+      - 'blockchain_data:/root/.emercoin'
+    restart: always
+    command: ./bin/emercoind
+    ports:
+      - "6661:6661"
+      - "6662:6662"

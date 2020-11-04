@@ -1,3 +1,4 @@
+![](https://github.com/emercoin/docker/blob/main/docker.png)
 # Emercoin Docker
 Docker compose image for Emercoin core
 

@@ -1,20 +1,22 @@
 #!/bin/bash
 
-FILE=/root/.emercoin/emercoin.conf
-new_pass=$1
+FILE=/srv/emercoind/emercoin.conf
+echo -n -e "Установите пароль для соединения RPC JSON к кошельку \nили нажмите [ENTER] (оставит текущий) ":
+read -s -t 15 new_pass
+echo
 old_pass=$(cat $FILE | grep "rpcpassword" | cut -d'=' -f2)
 
 if [ "$new_pass" == "" ]; then
-  echo "Пароль не может быть пустым!"
   exit 1
 fi
 if [ "$new_pass" == "$old_pass" ]; then
-  echo "Пароль тот же " "$old_pass"
+  echo "Введеный пароль совпадает с текущим"
   exit 0
  else
-   echo "Пароль сменен" "$new_pass"
+   echo -e "\e[31mПароль изменен!\e[0m"
    path=rpcpassword=$new_pass
    sed -i "s#.*rpcpassword.*#$path#g" $FILE
+   ./emercoin-cli restart
    exit 0
 fi
 

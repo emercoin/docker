@@ -5,10 +5,9 @@ venv
 .git
 .idea
 core-fs.dockerfile
-core-fs.dockerfile
 docker-compose.yaml
 docker-compose-fs.yaml
-emercoin.conf
 include
 share
 lib
+.emercoin

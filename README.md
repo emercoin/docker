@@ -41,7 +41,7 @@ docker-compose -f docker-compose-fs.yaml up -d
 
 **Сменить пароль в контейнере:**
 ```
-docker-compose exec emc bash changepass.sh _you_rpc_password_
+docker-compose exec emc bash changepass.sh
 docker-compose restart emc
 ```
 
@@ -89,3 +89,10 @@ docker-compose stop emc
 ```
 docker-compose down
 ```
+При этом база блокчейна, wallet.dat и emercoin.conf не удаляется. Она остается в volume docker_emercoin_data.
+
+**Удалить базу блокчейна**
+```
+docker volume rm docker_emercoin_data
+```
+Внимание! эта команда удаляет так-же wallet.dat

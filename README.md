@@ -1,53 +1,54 @@
 ![](https://github.com/emercoin/docker/blob/main/docker.png)
+
 # Emercoin Docker
 Docker compose image for Emercoin core
 
-### Зачем это всё надо?
+Why is all this necessary?
 
-Docker позволяет создать изолированный контейнер с кошельком Emercoin внутри и отдельным хранилищем (volume: blockhain_data) для блокчейна. Это дает кроссплатформенность (можно запускать на любой ОС, где можно установить Docker), возможность обновлять версии кошелька Emercoin в "один клик". Использовать в своих проектах функционал кошелька через интерфейс RPC JSON.
+Docker allows you to create an isolated container with an Emercoin wallet inside and a separate storage (volume: blockhain_data) for the blockchain. This makes it cross-platform (you can run it on any OS where you can install Docker), the ability to update versions of the Emercoin wallet in one click. Use the wallet functionality in your projects through the RPC JSON interface.
 
-На данный момент есть две версии:
--  Core Fast Start — Для тех, кто не хочет долго ждать синхронизации блокчейна после установки (~3-4 часа). Удобно, но рекомендуется использовать только в ознакомительных целях, так-как предзакаченный блокчейн противоречит идеологии децентрализации.
--  Core — классическая версия, просто кошелек Эмеркоина в контейнере. Требуется время для синхронизации с сеть. 
+At the moment there are two versions:
+- Core Fast Start - For those who do not want to wait long for blockchain synchronization after installation (~ 3-4 hours). It is convenient, but it is recommended to use it for informational purposes only, since the pre-downloaded blockchain contradicts the ideology of decentralization.
+- Core - the classic version, just an Emercoin wallet in a container. It takes time to sync with the network.
 
-### Для старта с нуля: 
+### To start from scratch:
  
-Установить [Git](https://github.com/git-guides/install-git) 
-Установить [Docker](https://docs.docker.com/engine/install/) и [docker-compose](https://docs.docker.com/compose/install/#install-compose) 
+Install [Git] (https://github.com/git-guides/install-git)
+Install [Docker] (https://docs.docker.com/engine/install/) and [docker-compose] (https://docs.docker.com/compose/install/#install-compose)
 
-Склонировать репозитарий и перейти в папку с проектом:
+Clone the repository and go to the project folder:
 ```
 git clone https://github.com/emercoin/docker && cd docker
 ``` 
 
-**Запустить сборку контейнера с Emercoin:**
+** Start building a container with Emercoin: **
 
-для обычной версии Core
-```
+for regular version Core
+``,
 docker-compose up -d
-```
-для версии Core Fast Start:
+``,
+for the Core Fast Start version:
 ```
 docker-compose -f docker-compose-fs.yaml up -d
 ```
 
-Контейнер запущен, требуется время, чтобы скачать блокчейн (~3-5 часов), но некоторые данные можно получить уже сейчас.
-По умолчанию для соединения с контейнером используется порт 6662
+The container is launched, it takes time to download the blockchain (~ 3-5 hours), but some data can be obtained right now.
+By default, port 6662 is used to connect to the container.
 
-- адрес: **127.0.0.1**
-- пользователь: **emcrpc**
-- пароль: **emcpass**
-- метод: **POST** тело запроса пример {"method": "getinfo" }
+- address: ** 127.0.0.1 **
+- user: ** emcrpc **
+- password: ** emcpass **
+- method: ** POST ** request body example {"method": "getinfo"}
 
-**Сменить пароль в контейнере:**
-```
+** Change the password in the container: **
+``,
 docker-compose exec emc bash changepass.sh
 docker-compose restart emc
-```
+``,
 
-### Как проверить, что контейнер работает нормально?
-Нужно отправить **POST** (с помощью Postman, например)
-по адресу `http://emcrpc:emcpass@127.0.0.1:6662`, тело запроса {"method": "getinfo" }
+### How can I check that the container is working properly?
+Need to send ** POST ** (using Postman, for example)
+to the address `http://emcrpc:emcpass@127.0.0.1:6662`, request body {" method ":" getinfo "}
 
 **В Python:**
 ```python
@@ -60,14 +61,14 @@ response = requests.request("POST", url, headers=headers, data = payload)
 print(response.text.encode('utf8'))
 ```
 
-**В командной строке c помощью Curl:**
+** On the command line using Curl: **
 (sudo apt-get update && sudo apt-get install curl) - если Curl не установлен
 ```bash
 curl --location --request POST 'emcrpc:emcpass@127.0.0.1:6662' \
 --header 'Content-Type: application/json' \
 --data-raw '{"method": "getinfo" }'
 ```
-если все ок, ответом будет выдача в формате JSON:
+if everything is ok, the response will be in JSON format:
 ```JSON
 {
     "result": {
@@ -78,21 +79,21 @@ curl --location --request POST 'emcrpc:emcpass@127.0.0.1:6662' \
         "balance": 0.000000,
 ```
 
-### Управление сборкой
+### Build Management
 
-**Остановить контейнер:**
-```
+** Stop container: **
+``,
 docker-compose stop emc
-```
+``,
 
-**Удалить контейнеры:**
-```
+** Remove containers: **
+``,
 docker-compose down
-```
-При этом база блокчейна, wallet.dat и emercoin.conf не удаляется. Она остается в volume docker_emercoin_data.
+``,
+In this case, the blockchain database, wallet.dat and emercoin.conf are not deleted. It remains in volume docker_emercoin_data.
 
-**Удалить базу блокчейна**
-```
+** Delete blockchain base **
+``,
 docker volume rm docker_emercoin_data
-```
-Внимание! эта команда удаляет так-же wallet.dat
+``,
+Attention! this command also deletes wallet.dat

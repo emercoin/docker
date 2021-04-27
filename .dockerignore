@@ -4,9 +4,11 @@ venv
 .gitignore
 .git
 .idea
+docker.png
 core-fs.dockerfile
 docker-compose.yaml
 docker-compose-fs.yaml
 include
 share
 lib
+misc

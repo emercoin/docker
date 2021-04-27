@@ -65,7 +65,7 @@ print(response.text.encode('utf8'))
 ```bash
 curl --location --request POST 'emcrpc:emcpass@127.0.0.1:6662' \
 --header 'Content-Type: application/json' \
---data-raw '{"method": "getinfo" }'
+--data-raw '{"method": "getinfo", "params":[]}'
 ```
 если все ок, ответом будет выдача в формате JSON:
 ```JSON

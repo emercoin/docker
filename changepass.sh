@@ -10,7 +10,7 @@ if [ "$new_pass" == "" ]; then
   exit 1
 fi
 if [ "$new_pass" == "$old_pass" ]; then
-  echo "Введеный пароль совпадает с текущим"
+  echo "Введенный пароль совпадает с текущим"
   exit 0
  else
    echo -e "\e[31mПароль изменен!\e[0m"

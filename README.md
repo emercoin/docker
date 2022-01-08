@@ -7,9 +7,7 @@ Docker compose image for Emercoin core
 
 Docker allows you to create an isolated container with an Emercoin wallet inside and a separate storage (volume: blockhain_data) for the blockchain. This makes it cross-platform (you can run it on any OS where you can install Docker), the ability to update versions of the Emercoin wallet in one click. Use the wallet functionality in your projects through the RPC JSON interface.
 
-At the moment there are two versions:
-- Core Fast Start - For those who do not want to wait long for blockchain synchronization after installation (~ 3-4 hours). It is convenient, but it is recommended to use it for informational purposes only, since the pre-downloaded blockchain contradicts the ideology of decentralization.
-- Core - the classic version, just an Emercoin wallet in a container. It takes time to sync with the network.
+Core - the classic version, just an Emercoin wallet in a container. It takes time to sync with the network.
 
 ### To start from scratch:
  
@@ -25,12 +23,9 @@ git clone https://github.com/emercoin/docker && cd docker
 
 for regular version Core
 ```
-docker-compose up -d
+docker-compose up --build -d
 ```
-for the Core Fast Start version:
-```
-docker-compose -f docker-compose-fs.yaml up -d
-```
+
 
 The container is launched, it takes time to download the blockchain (~ 3-5 hours), but some data can be obtained right now.
 By default, port 6662 is used to connect to the container.
@@ -38,7 +33,7 @@ By default, port 6662 is used to connect to the container.
 - address: **127.0.0.1**
 - user: **emcrpc**
 - password: **emcpass**
-- method: **POST** request body example {"method": "getinfo"}
+- method: **POST** request body example `{"method": "getinfo"}`
 
 **Change the password in the container:**
 ```
@@ -48,7 +43,7 @@ docker-compose restart emc
 
 ### How can I check that the container is working properly?
 Need to send **POST** (using Postman, for example)
-to the address `http://emcrpc:emcpass@127.0.0.1:6662`, request body {" method ":" getinfo "}
+to the address `http://emcrpc:emcpass@127.0.0.1:6662`, request body `{"method":"getinfo"}`
 
 **Python:**
 ```python
@@ -94,6 +89,6 @@ In this case, the blockchain database, wallet.dat and emercoin.conf are not dele
 
 **Delete blockchain database**
 ```
-docker volume rm docker_emercoin_data
+docker volume rm emer_data
 ```
 Attention! this command also deletes **wallet.dat**

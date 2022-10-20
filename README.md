@@ -17,7 +17,9 @@ Install [Docker](https://docs.docker.com/engine/install/) and [docker-compose](h
 Clone the repository and go to the project folder:
 ```
 git clone https://github.com/emercoin/docker && cd docker
-``` 
+```
+
+Rename `emercoin.conf.example` to `emercoin.conf`
 
 **Start building a container with Emercoin:**
 

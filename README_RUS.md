@@ -18,6 +18,8 @@ Core — классическая версия, просто кошелек Эм
 git clone https://github.com/emercoin/docker && cd docker
 ``` 
 
+Переименовать: `emercoin.conf.example` в `emercoin.conf`
+
 **Запустить сборку контейнера с Emercoin:**
 
 для обычной версии Core

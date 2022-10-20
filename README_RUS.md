@@ -52,10 +52,10 @@ docker-compose restart emc
 import requests
 
 url = "emcrpc:emcpass@127.0.0.1:6662"
-payload = "{\"method\": \"getinfo\" }"
+payload = {"method": "getinfo"}
 headers = { 'Content-Type': 'application/json' }
-response = requests.request("POST", url, headers=headers, data = payload)
-print(response.text.encode('utf8'))
+response = requests.request("POST", url, headers=headers, json=payload)
+print(response.json())
 ```
 
 **В командной строке c помощью Curl:**

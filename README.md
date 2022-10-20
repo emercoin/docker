@@ -50,10 +50,10 @@ to the address `http://emcrpc:emcpass@127.0.0.1:6662`, request body `{"method":"
 import requests
 
 url = "emcrpc:emcpass@127.0.0.1:6662"
-payload = "{\"method\": \"getinfo\" }"
+payload = {"method": "getinfo"}
 headers = { 'Content-Type': 'application/json' }
-response = requests.request("POST", url, headers=headers, data = payload)
-print(response.text.encode('utf8'))
+response = requests.request("POST", url, headers=headers, json=payload)
+print(response.json())
 ```
 
 **On the command line using Curl:**
@@ -72,6 +72,7 @@ if everything is ok, the response will be in JSON format:
         "protocolversion": 70015,
         "walletversion": 130000,
         "balance": 0.000000,
+        ...
 ```
 
 ### Build Management

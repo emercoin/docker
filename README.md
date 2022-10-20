@@ -11,8 +11,8 @@ Core - the classic version, just an Emercoin wallet in a container. It takes tim
 
 ### To start from scratch:
  
-Install [Git] (https://github.com/git-guides/install-git)
-Install [Docker] (https://docs.docker.com/engine/install/) and [docker-compose] (https://docs.docker.com/compose/install/#install-compose)
+Install [Git](https://github.com/git-guides/install-git)
+Install [Docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/#install-compose)
 
 Clone the repository and go to the project folder:
 ```

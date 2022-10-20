@@ -5,3 +5,5 @@ share
 venv
 .idea/
 bin
+wallet.dat
+emercoin.conf

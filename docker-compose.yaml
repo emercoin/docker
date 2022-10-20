@@ -11,7 +11,8 @@ services:
     volumes:
       - blockchain_data:/srv/emercoind
       - ./emercoin.conf:/srv/emercoind/emercoin.conf:ro
-    restart: always
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
     command: ./bin/emercoind -datadir=/srv/emercoind -conf=/srv/emercoind/emercoin.conf -printtoconsole
     ports:
       - "6661:6661"

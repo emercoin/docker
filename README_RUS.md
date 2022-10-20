@@ -76,6 +76,14 @@ curl --location --request POST 'emcrpc:emcpass@127.0.0.1:6662' \
         "balance": 0.000000,
 ```
 
+Разблокировать wallet в mint only режим:
+
+```bash
+curl --location --request POST 'emcrpc:emcpass@127.0.0.1:6662' \
+--header 'Content-Type: application/json' \
+--data-raw '{"method": "walletpassphrase", "params":["wallet_password", 100500, true]}'
+```
+
 ### Управление сборкой
 
 **Остановить контейнер:**

@@ -6,14 +6,15 @@ volumes:
 
 services:
   emc:
-    image: emercoin/core:0.7.11
+    image: emercoin/core:0.7.12
     container_name: emc
     volumes:
       - blockchain_data:/srv/emercoind
       - ./emercoin.conf:/srv/emercoind/emercoin.conf:ro
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
-    command: ./bin/emercoind -datadir=/srv/emercoind -conf=/srv/emercoind/emercoin.conf -printtoconsole
+    stop_grace_period: 40s
+    command: /bin/emercoind -datadir=/srv/emercoind -conf=/srv/emercoind/emercoin.conf -printtoconsole
     ports:
       - "6661:6661"
       - "6662:6662"

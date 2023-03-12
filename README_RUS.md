@@ -15,7 +15,7 @@ Core — классическая версия, просто кошелек Эм
 
 Склонировать репозитарий и перейти в папку с проектом:
 ```
-git clone https://github.com/emercoin/docker && cd docker
+git clone https://github.com/emercoin/docker emer_docker_wallet && cd emer_docker_wallet
 ``` 
 
 Переименовать: `emercoin.conf.example` в `emercoin.conf`

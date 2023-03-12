@@ -16,7 +16,7 @@ Install [Docker](https://docs.docker.com/engine/install/) and [docker-compose](h
 
 Clone the repository and go to the project folder:
 ```
-git clone https://github.com/emercoin/docker && cd docker
+git clone https://github.com/emercoin/docker emer_docker_wallet && cd emer_docker_wallet
 ```
 
 Rename `emercoin.conf.example` to `emercoin.conf`

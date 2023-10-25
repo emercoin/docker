@@ -6,14 +6,14 @@ volumes:
 
 services:
   emc:
-    image: emercoin/core:0.7.12
+    image: emercoin/core:0.8.3
     container_name: emc
     volumes:
       - blockchain_data:/srv/emercoind
       - ./emercoin.conf:/srv/emercoind/emercoin.conf:ro
       - /etc/localtime:/etc/localtime:ro
-    restart: unless-stopped
     stop_grace_period: 40s
+    # NB!  Use '-reindex' one time while changing version from 0.7.x to 0.8.x
     command: /bin/emercoind -datadir=/srv/emercoind -conf=/srv/emercoind/emercoin.conf -printtoconsole
     ports:
       - "6661:6661"
